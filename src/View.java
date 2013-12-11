@@ -76,7 +76,9 @@ public class View {
 	    
 	    // INITIALIZING THE OPTIONS IN THE FILE SECTION
 	    miSave = new MenuItem("Save As");
+	    miSave.setEnabled(false);
 	    miOpen = new MenuItem("Open");
+	    miOpen.setEnabled(false);
 	    miExit = new MenuItem("Exit");
 	    
 	    // ADDING THE OPTIONS TO THE FILE SECTION
