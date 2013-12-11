@@ -134,8 +134,7 @@ public class Model {
 	
 	private void exitOp(){
 		
-		int n = JOptionPane.showConfirmDialog(view.getFrame(), "Are you sure you want to exit?", "Confirm Exit", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
-		if(n == JOptionPane.YES_OPTION){
+		if(view.showStandardConfirmDialouge("Are you sure you want to exit?", "Confirm Exit")){
 			view.getFrame().setFocusable(false);
 			view.getFrame().setVisible(false);
 			view.getFrame().setEnabled(false);
