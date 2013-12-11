@@ -133,7 +133,7 @@ public class View {
 		try {
 			setDisplay(new URL(page.trim()));
 		} catch (MalformedURLException e) {
-			JOptionPane.showMessageDialog(frame, "Malformed URL Exception: \"" + page + "\"", "Error Occured", JOptionPane.WARNING_MESSAGE);
+			showStandardWarningMessage("Malformed URL Exception: \"" + page + "\"", "Error Occured");
 		}
 	}
 	
@@ -141,7 +141,7 @@ public class View {
 		try {
 			htmlDisplay.setPage(page);
 		} catch (IOException e) {
-			JOptionPane.showMessageDialog(frame, "IO Exception: \"" + page.toString() + "\"", "Error Occured", JOptionPane.WARNING_MESSAGE);
+			showStandardWarningMessage("IO Exception: \"" + page.toString() + "\"", "Error Occured");
 		}
 	}
 	
@@ -172,5 +172,16 @@ public class View {
         
         // Adds hyperlink functionality for search bar
         searchBar.addActionListener(model.getSearchBarListener());
-    }   
+    }
+    
+    ///////////////////////////////////////////////////////////////////////////////////////////////////// 
+    
+    public void showStandardWarningMessage(String message, String title){
+    	JOptionPane.showMessageDialog(frame, message, title, JOptionPane.WARNING_MESSAGE);
+    }
+    
+    public boolean showStandardConfirmDialouge(String message, String title){
+    	return JOptionPane.showConfirmDialog(frame, message, title, JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE) == JOptionPane.YES_OPTION;
+    }
+    
 }
