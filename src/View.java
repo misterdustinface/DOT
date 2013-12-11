@@ -171,6 +171,7 @@ public class View {
         htmlDisplay.addHyperlinkListener(model.getHyperlinkListener());
         
         // Adds hyperlink functionality for search bar
+        searchBar.addKeyListener(model.getSpecialKeyboardCommandListener());
         searchBar.addActionListener(model.getSearchBarListener());
     }
     
