@@ -3,4 +3,4 @@ DOT
 
 A Minimalist Web Browser
 
-Sort of Follows Model-View-Controller Scheme.
+Follows Model-View-Controller Scheme.
