@@ -185,7 +185,7 @@ public class View{
         
         ////////////////////////////////////////////////////////////////////////
         
-        // Sketchy little addition that should probably be done in model or something.
+        // Sketchy little addition
     	for(Bookmark current: DOTprofile.getBookmarks()){
     		MenuItem temp = new MenuItem(current.getNickname());
     		temp.addActionListener(model.getBookmarkClickedListener(current));
