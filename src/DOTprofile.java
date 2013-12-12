@@ -32,6 +32,7 @@ public class DOTprofile {
 		}
 	}
 	
+	// Need to make this legit.
 	public static void readBookmarksFromFile(File file){
 		try {
 			FileReader fileReader = new FileReader(file);
