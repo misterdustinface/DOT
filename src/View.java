@@ -6,6 +6,7 @@ import java.awt.MenuItem;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.LinkedList;
 
 import javax.swing.JEditorPane;
 import javax.swing.JFrame;
@@ -18,7 +19,7 @@ import javax.swing.JTextField;
  * 12/10/2013
  * @author dustin
  */
-public class View {
+public class View{
 	
     final public static int DEFAULT_WIDTH  = 400;
     final public static int DEFAULT_HEIGHT = 600;
@@ -47,6 +48,7 @@ public class View {
     // THE TOP MENU BAR //////////////
     private MenuBar			menuBar;  // The menu bar
     private Menu			fileMenu; // The "File" section
+    private Menu			bookmarksMenu;
     private MenuItem		miSave;   // save option
     private MenuItem		miOpen;   // open option
     private MenuItem		miExit;   // exit option
@@ -86,8 +88,13 @@ public class View {
 	    fileMenu.add(miOpen);
 	    fileMenu.add(miExit);
 	    
+	    bookmarksMenu = new Menu();
+	    bookmarksMenu.setLabel("Bookmarks");
+	    
+	    
 	    // ADDING THE FILE SECTION TO THE MENU BAR
 	    menuBar.add(fileMenu);
+	    menuBar.add(bookmarksMenu);
 	    
 	    // ADD THE MenuBar to the display
 	    frame.setMenuBar(menuBar);
@@ -175,6 +182,15 @@ public class View {
         // Adds hyperlink functionality for search bar
         searchBar.addKeyListener(model.getSpecialKeyboardCommandListener());
         searchBar.addActionListener(model.getSearchBarListener());
+        
+        ////////////////////////////////////////////////////////////////////////
+        
+    	for(Bookmark current: DOTprofile.getBookmarks()){
+    		MenuItem temp = new MenuItem(current.getNickname());
+    		temp.addActionListener(model.getBookmarkClickedListener(current));
+    		bookmarksMenu.add(temp);
+    	}
+
     }
     
     ///////////////////////////////////////////////////////////////////////////////////////////////////// 
