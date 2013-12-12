@@ -28,6 +28,8 @@ public class Model {
     public Model(View view){
     	this.view = view;
     	
+        DOTprofile.addTestBookmark();
+    	
     	view.initActionListeners(this);
     } 
   
@@ -201,7 +203,8 @@ public class Model {
     private ActionListener searchBarListener = new ActionListener(){
 		@Override
 		public void actionPerformed(ActionEvent event) {
-			if(! view.getSearchBarText().contains("http://")){
+			if(! view.getSearchBarText().contains("http://")
+			&& ! view.getSearchBarText().contains("https://")){
 				view.replaceSearchBarText("http://" + view.getSearchBarText().trim());
 			}
 			
@@ -209,4 +212,17 @@ public class Model {
 		}
     };
     
+	/////////////////////////////////////////////////////////////////////////////////////////////////////  
+    
+    public ActionListener getBookmarkClickedListener(final Bookmark b){
+    	return new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent e) {
+    			view.replaceSearchBarText(b.getURL().toString());
+    			view.setDisplay(b.getURL());
+    		}
+        	
+        };
+    }
+
 }
